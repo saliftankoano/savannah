@@ -17,7 +17,7 @@ export default function Search() {
           <div className="dept-t"></div>
         </span>
       </div>
-      <div className="bs">.</div>
+      <div className="bs"></div>
     </div>
   );
 }
