@@ -1,1 +1,1 @@
-# savannah
+# Savannah University Directory
