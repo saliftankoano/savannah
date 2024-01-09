@@ -1,20 +1,54 @@
 import "./Search.css";
+
+// Get All the options and related triangles
+const options = document.getElementsByClassName("option");
+const allTriangles = document.getElementsByClassName("triangle");
+
+//Initialize the non default triangles visibility
+allTriangles[1].style.visibility = "hidden";
+allTriangles[2].style.visibility = "hidden";
+
+function visisbleToggle(e) {
+  for (let i = 0; i < options.length; i++) {
+    if (e !== options[i]) {
+      allTriangles[i].style.visibility = "hidden";
+    } else {
+      allTriangles[i].style.visibility = "visible";
+    }
+  }
+}
+
 export default function Search() {
   return (
     <div className="search-bar">
       <h1 className="title">DIRECTORY</h1>
       <div className="options">
-        <span className="faculty option">
+        <span
+          className="faculty option"
+          onClick={(e) => {
+            visisbleToggle(e.target);
+          }}
+        >
           Faculty
-          <div className="faculty-t"></div>
+          <div className="triangle"></div>
         </span>
-        <span className="staff option">
+        <span
+          className="staff option"
+          onClick={(e) => {
+            visisbleToggle(e.target);
+          }}
+        >
           Staff
-          <div className="staff-t"></div>
+          <div className="triangle"></div>
         </span>
-        <span className="dept option">
+        <span
+          className="dept option"
+          onClick={(e) => {
+            visisbleToggle(e.target);
+          }}
+        >
           Departments
-          <div className="dept-t"></div>
+          <div className="triangle"></div>
         </span>
       </div>
       <div className="bs"></div>
