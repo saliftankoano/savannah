@@ -1,0 +1,79 @@
+.search-section {
+  width: 100%;
+}
+.options {
+  width: 6rem;
+  display: flex;
+  justify-content: space-between;
+}
+.option {
+  font-size: 30px;
+  color: black;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.option:hover {
+  color: #b6922e;
+}
+.sb {
+  width: 100%;
+  height: 18vh;
+  background-color: hsl(219, 78%, 18%);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+}
+.triangle {
+  visibility: visible;
+  border-top: 0px solid transparent;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid #0a2351;
+  width: 0px;
+  height: 0px;
+}
+.hidden {
+  visibility: hidden;
+}
+.faculty-search {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.search-entries {
+  width: 80%;
+}
+.select-depts {
+  width: 20%;
+  height: 40%;
+  border-radius: 50px;
+  margin-top: 4vh;
+  margin-left: 5vh;
+  text-align: center;
+  font-weight: 550;
+  font-size: 20px;
+}
+
+#submit-search {
+  width: 10%;
+  height: 40%;
+  border-radius: 50px;
+  margin-top: 4vh;
+  margin-right: 5vh;
+  text-align: center;
+  font-weight: 550;
+  font-size: 20px;
+  color: white;
+  background-color: #b6922e;
+  display: inline;
+  justify-content: end;
+}
+
+#submit-search:hover {
+  scale: 1.1;
+  background-color: black;
+  color: #b6922e;
+}

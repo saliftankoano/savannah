@@ -7,13 +7,35 @@
 .logo {
   display: inline-flex;
 }
-.links {
-  display: inline-flex;
-  justify-content: center;
+.top-right {
+  display: flex;
   align-items: center;
 }
-.link {
+.socials {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 1rem;
+}
+img:hover {
+  scale: 1.15;
+}
+#x-logo {
+  width: 2rem;
+  height: 2rem;
+}
+#linkedin-logo {
+  margin-left: 1rem;
+  width: 2rem;
+  height: 2rem;
+}
+.links {
+  display: inline-flex;
+}
+.ad-link {
   padding: 0 0.5rem;
+}
+.ab-link {
+  padding-left: 0.5rem;
 }
 a {
   color: black;

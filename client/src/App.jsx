@@ -1,15 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import Search from "./components/Search";
 import Footer from "./components/Footer";
-Footer;
-Search;
+import SearchBlock from "./components/SearchBlock";
+
 function App() {
   return (
     <div className="app">
       <NavBar />
-      <Search />
+      <SearchBlock />
       <Footer />
     </div>
   );
