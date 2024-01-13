@@ -1,5 +1,5 @@
 import KeywordSearch from "./KeywordSearch";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./SearchBlock.css";
 
 let options;
@@ -13,15 +13,28 @@ document.addEventListener("DOMContentLoaded", function () {
   allTriangles = document.getElementsByClassName("triangle");
 });
 
-const departments = [
-  { name: "All departments" },
-  { name: "Computer Science" },
-  { name: "Nursing" },
-  { name: "Business" },
-];
+// const departments = [
+//   { name: "All departments" },
+//   { name: "Computer Science" },
+//   { name: "Nursing" },
+//   { name: "Business" },
+// ];
+
+async function getAllDepts() {
+  const response = await fetch("http://localhost:5172/depts");
+  const depts = await response.json();
+
+  let finalResults = [];
+  depts.forEach((element) => {
+    finalResults.push(element);
+  });
+  return finalResults;
+}
+let departments;
+departments = await getAllDepts();
+console.log(departments);
 
 function SearchBlock() {
-  // Makes the triangle displaying the current choice visible
   function visisbleToggle(e) {
     for (let i = 0; i < options.length; i++) {
       if (e !== options[i]) {

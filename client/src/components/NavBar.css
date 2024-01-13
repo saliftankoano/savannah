@@ -16,9 +16,7 @@
   justify-content: end;
   margin-bottom: 1rem;
 }
-img:hover {
-  scale: 1.15;
-}
+
 #x-logo {
   width: 2rem;
   height: 2rem;
@@ -27,6 +25,10 @@ img:hover {
   margin-left: 1rem;
   width: 2rem;
   height: 2rem;
+}
+#x-logo:hover,
+#linkedin-logo:hover {
+  scale: 1.15;
 }
 .links {
   display: inline-flex;
