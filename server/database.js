@@ -69,9 +69,8 @@ export async function getAllStaff() {
   return staff;
 }
 export async function getAllDepts() {
-  const ans = await pool.query("SELECT * FROM departments;");
-  let depts = ans.slice(0, -1);
-  depts = depts[0];
+  const ans = await pool.query("SELECT * FROM departments");
+  let depts = ans[0];
   return depts;
 }
 
