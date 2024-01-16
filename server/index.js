@@ -1,5 +1,11 @@
 import express from "express";
-import { getFaculty, getStaff, getDept, getAllDepts } from "./database.js";
+import {
+  getFaculty,
+  getStaff,
+  getDept,
+  getAllDepts,
+  getAllFaculty,
+} from "./database.js";
 const app = express();
 const port = 5172;
 
@@ -9,9 +15,14 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
-
+app.get("/faculty", async (req, res) => {
+  let allFaculty = await getAllFaculty();
+  allFaculty = allFaculty;
+  res.send(allFaculty);
+});
 app.get("/depts", async (req, res) => {
   let departments = await getAllDepts();
+  //Why this ?
   departments = departments;
   res.send(departments);
 });
