@@ -1,11 +1,9 @@
 .footer {
-  position: absolute;
-  bottom: 0;
-  margin-top: 10vh;
   color: white;
   background-color: #0a2351;
-  height: 12vh;
-  width: 90%;
+  height: 10vh;
+  width: 100%;
+  margin-top: 7vh;
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
 }

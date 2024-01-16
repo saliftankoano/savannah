@@ -16,7 +16,7 @@
 .option:hover {
   color: #b6922e;
 }
-.sb {
+.search-box {
   width: 100%;
   height: 18vh;
   background-color: hsl(219, 78%, 18%);
@@ -41,6 +41,21 @@
   height: 100%;
   display: inline-flex;
   justify-content: space-between;
+}
+.keyword-search {
+  background-color: white;
+  width: 20%;
+  height: 40%;
+  border-radius: 50px;
+  margin-top: 4vh;
+  margin-left: 5vh;
+  text-align: center;
+  font-weight: 550;
+  font-size: 20px;
+  color: #b6922e;
+}
+.keyword-search::placeholder {
+  text-align: center;
 }
 
 .search-entries {
@@ -76,4 +91,52 @@
   scale: 1.1;
   background-color: black;
   color: #b6922e;
+}
+
+p {
+  color: white;
+}
+
+.title {
+  margin-top: 5vh;
+}
+.results-box {
+  width: 100%;
+  height: 18vh;
+  background-color: hsl(219, 78%, 18%);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: 3vh;
+}
+
+th {
+  border: white solid 2px;
+  padding: 0 0.5rem;
+}
+td {
+  text-align: center;
+}
+.ag-theme-quartz-dark .ag-root {
+  --ag-foreground-color: rgb(238, 0, 255);
+  --ag-background-color: hsl(219, 78%, 18%);
+  --ag-header-foreground-color: white;
+  --ag-header-background-color: #b6922e;
+  --ag-odd-row-background-color: rgb(0, 0, 0, 0.03);
+  --ag-header-column-resize-handle-color: white;
+
+  --ag-font-size: 17px;
+  --ag-font-family: monospace;
+}
+.ag-theme-quartz-dark .ag-body {
+  background-color: hsl(219, 78%, 18%);
+}
+
+.ag-theme-savannah {
+  height: 50vh;
+}
+h2 {
+  margin-top: 3vh;
 }

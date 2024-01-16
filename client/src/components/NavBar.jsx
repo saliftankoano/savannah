@@ -2,6 +2,7 @@ import "./NavBar.css";
 import logo from "../assets/sv-uv.png";
 import xlogo from "../assets/x.svg";
 import linkedinlogo from "../assets/linkedin.svg";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -15,12 +16,12 @@ export default function NavBar() {
               <img src={linkedinlogo} id="linkedin-logo" />
             </div>
             <div className="links">
-              <a className="ad-link" href="./">
-                ADMISSIONS
-              </a>
-              <a className="ab-link" href="./">
+              <Link className="about-link" to={`/about`}>
                 ABOUT
-              </a>
+              </Link>
+              <Link className="admission-link" to={`/admissions`}>
+                ADMISSIONS
+              </Link>
             </div>
           </div>
         </div>

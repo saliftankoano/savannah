@@ -33,17 +33,17 @@
 .links {
   display: inline-flex;
 }
-.ad-link {
+.about-link {
   padding: 0 0.5rem;
 }
-.ab-link {
-  padding-left: 0.5rem;
-}
-a {
+
+.about-link,
+.admission-link {
   color: black;
   text-decoration: none;
 }
-a:hover {
+.about-link:hover,
+.admission-link:hover {
   color: #b6922e;
 }
 h1 {
