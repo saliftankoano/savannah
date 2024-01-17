@@ -4,13 +4,13 @@
   display: flex;
   justify-content: center;
   background-image: url("./assets/admin.png");
-  background-size: 100% 120%;
+  background-size: 100% 150%;
   background-repeat: no-repeat;
 }
 .login-container {
   min-width: 30vw;
-  min-height: 30vh;
-  margin-top: 10%;
+  height: 37.3vh;
+  margin-top: 4.9%;
 }
 
 #sv-logo {
@@ -31,7 +31,7 @@
   text-align: center;
   font-family: robotto;
   font-size: 20px;
-  width: 33%;
+  width: 35%;
   height: 4vh;
   margin-left: 32.5%;
 }

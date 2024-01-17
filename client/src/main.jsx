@@ -5,6 +5,7 @@ import "./index.css";
 import About from "./About.jsx";
 import Admissions from "./Admissions.jsx";
 import Admin from "./Admin.jsx";
+import Dashboard from "./Dashboard.jsx";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 
