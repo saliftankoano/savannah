@@ -56,6 +56,12 @@ export async function createDept(name, phone, extension, email, location) {
 
 // -- READ functions --
 // GET ALL Functions
+export async function getAdmin(username, password) {
+  const ans = await pool.query(
+    `SELECT * FROM admin WHERE username= "${username}" AND password= "${password}";`
+  );
+  return ans[0];
+}
 export async function getAllFaculty() {
   const ans = await pool.query("SELECT * FROM faculty;");
   let faculty = ans.slice(0, -1);

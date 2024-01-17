@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getAdmin,
   getFaculty,
   getStaff,
   getDept,
@@ -41,7 +42,12 @@ app.get("/department/:name", async (req, res) => {
   const dept = await getDept(name);
   res.send(dept);
 });
-
+app.get("/admin/:username&:password", async (req, res) => {
+  const username = req.params.username;
+  const password = req.params.password;
+  const user = await getAdmin(username, password);
+  res.send(user);
+});
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
