@@ -6,6 +6,7 @@ import {
   getDept,
   getAllDepts,
   getAllFaculty,
+  getAllStaff,
 } from "./database.js";
 const app = express();
 const port = 5172;
@@ -23,9 +24,11 @@ app.get("/faculty", async (req, res) => {
 });
 app.get("/depts", async (req, res) => {
   let departments = await getAllDepts();
-  //Why this ?
-  departments = departments;
   res.send(departments);
+});
+app.get("/staff", async (req, res) => {
+  let staff = await getAllStaff();
+  res.send(staff);
 });
 app.get("/faculty/:name", async (req, res) => {
   const name = req.params.name;
