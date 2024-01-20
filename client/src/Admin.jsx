@@ -2,13 +2,17 @@ import { useState, useEffect } from "react";
 import "./Admin.css";
 import miniSv from "./assets/mini-sv.png";
 import { useNavigate } from "react-router-dom";
+import LoginError from "./components/LoginError";
 
 export default function Admin() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [showLoginError, setShowLoginError] = useState(false);
+
+  const navigate = useNavigate(); // Get the navigate function from react-router-dom
+
   useEffect(() => {}, [username]);
   useEffect(() => {}, [password]);
-  const navigate = useNavigate();
   function handleUsername(event) {
     setUsername(event.target.value);
   }
@@ -33,20 +37,30 @@ export default function Admin() {
   async function loginHandler(event) {
     event.preventDefault();
     const userObtained = await getAdmin(username, password);
-    // console.log(userObtained);
+
     if (userObtained === undefined) {
-      console.log("No Match Found! Check your Username and Password");
+      //  No matching user
+      setShowLoginError(true);
     } else if (
       userObtained.username === username &&
       userObtained.password === password
     ) {
-      navigate("/dashboard");
-      //   console.log("We gucci");
+      //  We Are Good
+      console.log("Match Found!");
+
+      navigate("/dashboard", {
+        state: { username: username, password: password },
+      });
     }
-    // console.log(password);
   }
+
   return (
     <div className="admin">
+      {showLoginError && (
+        <span id="error-popup">
+          <LoginError show={true} onClose={() => setShowLoginError(false)} />
+        </span>
+      )}
       <div className="login-container">
         <div id="logo-container">
           <img id="sv-logo" src={miniSv} />

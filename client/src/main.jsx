@@ -1,3 +1,7 @@
+// Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -12,7 +16,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-
+import TestArea from "./TestArea.jsx";
+import Lost from "./Lost.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +38,14 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/lost",
+    element: <Lost />,
+  },
+  {
+    path: "/test",
+    element: <TestArea />,
   },
 ]);
 

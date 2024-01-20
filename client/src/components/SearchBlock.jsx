@@ -1,5 +1,4 @@
-import { createRoot, ReactDOM } from "react-dom/client";
-import { React, useState, useEffect, useCallback } from "react";
+import { React, useState, useEffect } from "react";
 import "./SearchBlock.css";
 //AG GRID
 

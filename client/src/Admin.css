@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   background-image: url("./assets/admin.png");
-  background-size: 100% 150%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 .login-container {
@@ -52,4 +52,11 @@
 #submit-login:hover {
   transition: all 0.1s ease-in-out;
   scale: 0.9;
+}
+
+#error-popup {
+  position: absolute;
+  height: 40vh;
+  width: 100%;
+  z-index: 1;
 }
