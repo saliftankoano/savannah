@@ -25,6 +25,7 @@ async function getAllDepts() {
   depts.forEach((element) => {
     finalResults.push(element);
   });
+  // console.log(finalResults);
   return finalResults;
 }
 

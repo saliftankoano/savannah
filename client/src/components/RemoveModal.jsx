@@ -2,7 +2,7 @@ import "./RemoveModal.css";
 import { useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
-import CustomForm from "./CustomForm";
+import RemoveForm from "./RemoveForm";
 import RemoveTlt from "./RemoveTlt";
 
 export default function RemoveModal() {
@@ -22,7 +22,7 @@ export default function RemoveModal() {
           <Modal.Title id="modal-title">REMOVE EMPLOYEE</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CustomForm />
+          <RemoveForm />
         </Modal.Body>
       </Modal>
     </>

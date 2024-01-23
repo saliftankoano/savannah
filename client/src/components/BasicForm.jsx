@@ -1,4 +1,4 @@
-import "./CustomForm.css";
+import "./BasicForm.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -21,7 +21,7 @@ async function getAllDepts() {
   return finalResults;
 }
 
-function CustomForm() {
+export default function BasicForm() {
   const { Formik } = formik;
 
   const schema = yup.object().shape({
@@ -209,5 +209,3 @@ function CustomForm() {
     </Formik>
   );
 }
-
-export default CustomForm;

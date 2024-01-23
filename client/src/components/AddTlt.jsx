@@ -15,7 +15,7 @@ export default function AddTlt() {
         </Tooltip.Trigger>
         <Tooltip.Portal>
           <Tooltip.Content className="TooltipContent" sideOffset={5}>
-            Add Employee
+            Add
             <Tooltip.Arrow className="TooltipArrow" />
           </Tooltip.Content>
         </Tooltip.Portal>

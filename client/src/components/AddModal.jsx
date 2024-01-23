@@ -1,17 +1,17 @@
 import "./AddModal.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
-import CustomForm from "./CustomForm";
+import BasicForm from "./BasicForm";
 //ToolTips
 import AddTlt from "./AddTlt";
 
 export default function AddModal() {
   const [show, setShow] = useState(false);
-
+  const [entity, setEntity] = useState("ENTITY");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  useEffect(() => {}, [entity]);
   return (
     <>
       <span onClick={handleShow}>
@@ -20,10 +20,10 @@ export default function AddModal() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton id="add-modal-header">
-          <Modal.Title id="add-modal-title">ADD EMPLOYEE</Modal.Title>
+          <Modal.Title id="add-modal-title">ADD {entity}</Modal.Title>
         </Modal.Header>
         <Modal.Body id="add-modal-body">
-          <CustomForm />
+          <BasicForm />
         </Modal.Body>
       </Modal>
     </>
