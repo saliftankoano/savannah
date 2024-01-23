@@ -75,9 +75,20 @@ export async function getAllStaff() {
   return staff;
 }
 export async function getAllDepts() {
-  const ans = await pool.query("SELECT * FROM departments");
-  let depts = ans[0];
-  return depts;
+  try {
+    const ans = await pool.query("SELECT * FROM departments");
+    const depts = ans[0];
+
+    if (Array.isArray(depts)) {
+      return depts;
+    } else {
+      console.error("Departments data is not an array:", depts);
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching departments:", error);
+    return [];
+  }
 }
 
 export async function getFaculty(name) {
@@ -133,8 +144,79 @@ export async function getDept(name) {
   dept = dept[0];
   return dept;
 }
+//Get entity by ID
+export async function getEntityById(id, entity) {
+  const query = `SELECT * FROM ${entity} WHERE id = ?`;
+  const queryParams = [id];
+
+  const result = await pool.query(query, queryParams);
+  const entityData = result[0][0];
+
+  if (entityData) {
+    return entityData;
+  } else {
+    return { error: "inexistent" }; // Return an error code
+  }
+}
 
 // -- UPDATE functions --
+export async function updateEntity(id, updatedData) {
+  const allowedEntities = ["faculty", "departments", "staff"];
+  // console.log(updatedData);
+  if (
+    !updatedData ||
+    !updatedData.entity ||
+    !allowedEntities.includes(updatedData.entity)
+  ) {
+    // console.log(updatedData);
+  }
+
+  let query = `UPDATE ${updatedData.entity} SET `;
+  let queryParams = [];
+
+  if (updatedData.name !== "") {
+    if (updatedData.entity !== "departments") {
+      query = query.concat(` name= ?,`);
+      queryParams.push(updatedData.name);
+    }
+  }
+  if (updatedData.phone !== "") {
+    query = query.concat(` phone= ?,`);
+    queryParams.push(updatedData.phone);
+  }
+  if (updatedData.extension !== "") {
+    query = query.concat(` extension= ?,`);
+    queryParams.push(updatedData.extension);
+  }
+  if (updatedData.email !== "") {
+    query = query.concat(` email= ?,`);
+    queryParams.push(updatedData.email);
+  }
+  if (updatedData.location !== "") {
+    query = query.concat(` location= ?,`);
+    queryParams.push(updatedData.location);
+  }
+  if (updatedData.department !== "") {
+    if (updatedData.entity !== "departments") {
+      query = query.concat(` dept= ?,`);
+      queryParams.push(updatedData.department);
+    }
+  }
+  query = query.slice(0, -1); // Remove the trailing comma in the last column specified above
+  query = query.concat(` WHERE id= ?`);
+  queryParams.push(id);
+
+  let updatedEntity;
+  try {
+    updatedEntity = await pool.query(query, queryParams);
+    return updatedEntity[0][0] || null;
+  } catch (error) {
+    console.error("Error updating entity:", error.message);
+    console.error("Failed to update entity" + updatedEntity);
+    return "failed";
+  }
+}
+
 export async function updateFaculty(
   id,
   name,

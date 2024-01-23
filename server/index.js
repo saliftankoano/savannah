@@ -7,15 +7,45 @@ import {
   getAllDepts,
   getAllFaculty,
   getAllStaff,
+  updateEntity,
+  getEntityById,
 } from "./database.js";
+import cors from "cors";
+
 const app = express();
+app.use(express.json()); // This middleware parses JSON data in the request body
+
 const port = 5172;
 
+app.use(cors());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
+});
+app.put("/update/:id", async (req, res) => {
+  const { id } = req.params; // Get id from URL params
+  const { entity, name, phone, extension, email, location, department } =
+    req.body; // Use req.body to get parameters from the JSON payload
+
+  let updatedEntity = await updateEntity(id, {
+    entity,
+    name,
+    phone,
+    extension,
+    email,
+    location,
+    department,
+  });
+  res.send(updatedEntity);
+});
+app.get("/entity/:id/:entity", async (req, res) => {
+  const id = req.params.id;
+  const entity = req.params.entity;
+
+  let response = await getEntityById(id, entity);
+  res.send(response);
 });
 app.get("/faculty", async (req, res) => {
   let allFaculty = await getAllFaculty();
