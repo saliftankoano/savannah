@@ -9,6 +9,12 @@ import {
   getAllStaff,
   updateEntity,
   getEntityById,
+  deleteDept,
+  deleteFaculty,
+  deleteStaff,
+  createFaculty,
+  createStaff,
+  createDept,
 } from "./database.js";
 import cors from "cors";
 
@@ -23,6 +29,43 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
+});
+app.post("/:entity", async (req, res) => {
+  const entity = req.params.entity;
+  let result;
+  const { name, phone, extension, email, location, department } = req.body;
+
+  if (entity === "faculty") {
+    const faculty = await createFaculty(
+      name,
+      phone,
+      extension,
+      email,
+      location,
+      department
+    );
+    result = faculty;
+  } else if (entity === "staff") {
+    const staff = await createStaff(
+      name,
+      phone,
+      extension,
+      email,
+      location,
+      department
+    );
+    result = staff;
+  } else {
+    const department = await createDept(
+      name,
+      phone,
+      extension,
+      email,
+      location
+    );
+    result = department;
+  }
+  res.send(result);
 });
 app.put("/update/:id", async (req, res) => {
   const { id } = req.params; // Get id from URL params
@@ -46,6 +89,20 @@ app.get("/entity/:id/:entity", async (req, res) => {
 
   let response = await getEntityById(id, entity);
   res.send(response);
+});
+app.delete("/delete/:entity&:id", async (req, res) => {
+  const entity = req.params.entity;
+  const id = req.params.id;
+  let result;
+  if (entity === "faculty") {
+    const faculty = await deleteFaculty(id);
+    result = faculty;
+  } else if (entity === "staff") {
+    const staff = await deleteStaff(id);
+    result = staff;
+  }
+  //Departments can't be removed
+  res.send(result);
 });
 app.get("/faculty", async (req, res) => {
   let allFaculty = await getAllFaculty();
@@ -81,6 +138,7 @@ app.get("/admin/:username&:password", async (req, res) => {
   const user = await getAdmin(username, password);
   res.send(user);
 });
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

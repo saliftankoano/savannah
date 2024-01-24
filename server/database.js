@@ -277,6 +277,10 @@ export async function deleteStaff(id) {
   );
   return staff;
 }
+/*
+Due to foreign key constraint deleteDept won't be used
+We can implement it properly later if needed.
+*/
 export async function deleteDept(id) {
   let dept = pool.query(
     `DELETE FROM departments
@@ -285,69 +289,3 @@ export async function deleteDept(id) {
   );
   return dept;
 }
-// Test CREATE functions
-// let facultyInserted = await createFaculty(
-//   "Uzomaka Meretohe",
-//   "2767404961",
-//   "0059",
-//   "uzo@gmail.com",
-//   "CA-",
-//   "Biology"
-// );
-// let staffInserted = await createStaff(
-//   "Morino Gazono",
-//   "2767404961",
-//   "0059",
-//   "mogazo@gmail.com",
-//   "SC-22",
-//   "Chemistry"
-// );
-// let departmentInserted = await createDept(
-//   "Nursing",
-//   "1737492162",
-//   "0033",
-//   "nursing@gmail.com",
-//   "Building N"
-// );
-
-// -- Test READ functions --
-let allFaculty = await getAllFaculty();
-let allStaff = await getAllStaff();
-let allDepartments = await getAllDepts();
-// Test Specific READ functions
-let department = await getDept("computer");
-let faculty = await getFaculty("Johnson");
-let staff = await getStaff("Turner");
-// Test UPDATE functions
-
-// let updatedFaculty = await updateFaculty(
-//   6,
-//   "Salif Tankoano",
-//   "8067904560",
-//   "9523",
-//   "salif@gmail.com",
-//   "CS-05",
-//   "Computer Science"
-// );
-// let updatedStaff = await updateStaff(
-//   6,
-//   "Salif Tankoano",
-//   "8067904560",
-//   "9523",
-//   "salif@gmail.com",
-//   "CS-05",
-//   "Computer Science"
-// );
-// let updatedDept = await updateDept(
-//   5,
-//   "Chemistry",
-//   "9998887777",
-//   "0202",
-//   "chemistry@example.com",
-//   "Building E"
-// );
-
-//Test DELETE functions
-// let deletedFaculty = await deleteFaculty(10);
-// let deletedStaff = await deleteStaff(7);
-// let deletedDept = await deleteDept(6);
