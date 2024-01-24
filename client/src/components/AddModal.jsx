@@ -2,7 +2,7 @@ import "./AddModal.css";
 import { useEffect, useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
-import BasicForm from "./BasicForm";
+import AddForm from "./AddForm";
 //ToolTips
 import AddTlt from "./AddTlt";
 
@@ -84,7 +84,7 @@ export default function AddModal() {
           <Modal.Title id="add-modal-title">ADD {entity}</Modal.Title>
         </Modal.Header>
         <Modal.Body id="add-modal-body">
-          <BasicForm updateTitle={changeEntity} onSubmit={handleFormSubmit} />
+          <AddForm updateTitle={changeEntity} onSubmit={handleFormSubmit} />
         </Modal.Body>
       </Modal>
     </>

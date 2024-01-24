@@ -1,4 +1,4 @@
-import "./BasicForm.css";
+import "./AddForm.css";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";

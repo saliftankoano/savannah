@@ -59,7 +59,7 @@ export default function RemoveModal() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton id="modal-header">
-          <Modal.Title id="modal-title">DELETE EMPLOYEE</Modal.Title>
+          <Modal.Title id="modal-title">DELETE</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <RemoveForm onSubmit={handleFormSubmit} />
