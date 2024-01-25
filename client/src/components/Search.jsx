@@ -1,7 +1,6 @@
+import "./Search.css";
 import { React, useState, useEffect } from "react";
-// import "./SearchBlock.css";
 //AG GRID
-
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
@@ -14,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Get All the options and related triangles
   options = document.getElementsByClassName("option");
   currentOption = "faculty";
-  allTriangles = document.getElementsByClassName("triangle");
+  allTriangles = document.getElementsByClassName("triangle-box");
+  //   console.log(allTriangles);
 });
 
 async function getAllDepts() {
@@ -30,8 +30,8 @@ async function getAllDepts() {
 }
 
 const departments = await getAllDepts();
-
-function SearchBlock() {
+//Search function Start
+export default function Search() {
   const [keyword, setKeyword] = useState("");
   const [department, setDepartment] = useState("Computer Science");
   const [rowData, setRowData] = useState([]);
@@ -67,9 +67,12 @@ function SearchBlock() {
         currentOption = options[i];
         currentOption = currentOption.getAttribute("class");
         const currentClasses = currentOption.split(" ");
+        // console.log(currentClasses);
         currentOption = currentClasses[0];
-
-        const keywordElement = document.querySelector(".keyword-search");
+        console.log(currentOption);
+        //
+        const keywordElement = document.getElementById("keyword-in");
+        console.log(keywordElement);
         if (currentOption === "department") {
           keywordElement.style.display = "none";
         } else {
@@ -147,56 +150,67 @@ function SearchBlock() {
     event.preventDefault();
     await handleSubmit(event);
   };
-  function logData(data) {
-    console.log(data);
-  }
 
   return (
-    <div className="search-section">
-      <h1 className="title">DIRECTORY</h1>
-      <div className="options">
-        <span
-          className="faculty option"
+    <div className="search-section container-fluid">
+      <div className="row title-row">
+        <div className="col-lg-12 col-md-12">
+          <h1 id="title">DIRECTORY</h1>
+        </div>
+      </div>
+      <div className="row options-row">
+        <div
+          className="faculty option col-lg-4 col-md-4 col-4 entities d-inline-flex justify-content-start"
           onClick={(e) => {
             visisbleToggle(e.target);
           }}
         >
           Faculty
-          <div className="triangle"></div>
-        </span>
-        <span
-          className="staff option"
+        </div>
+        <div
+          className="staff option col-lg-4 col-md-4 col-4 entities d-inline-flex justify-content-center"
           onClick={(e) => {
             visisbleToggle(e.target);
           }}
         >
           Staff
-          <div className="triangle hidden"></div>
-        </span>
-        <span
-          className="department option"
+        </div>
+        <div
+          className="department option col-lg-4 col-md-4 col-4 entities d-inline-flex justify-content-center"
           onClick={(e) => {
             visisbleToggle(e.target);
           }}
         >
           Departments
-          <div className="triangle hidden"></div>
-        </span>
+        </div>
       </div>
-
-      <div className="search-box">
-        <form className="faculty-search">
-          <div className="search-entries">
+      <div className="row triangles-row">
+        <div className="col-lg-4 col-md-4 col-4 d-flex justify-content-start">
+          <div className="col-lg-1 col-md-1 col-2"></div>
+          <div className="triangle-box"></div>
+        </div>
+        <div className="col-lg-4 col-md-4 col-4 d-flex justify-content-center">
+          <div className="triangle-box  hidden"></div>
+        </div>
+        <div className="col-lg-4 col-md-4 col-4 d-flex justify-content-center">
+          <div className="triangle-box hidden"></div>
+        </div>
+      </div>
+      <form className="row form-items">
+        <div className="ms-lg-1 ms-md-1 search-bx d-lg-flex d-md-flex d-block justify-content-lg-center align-items-lg-center justify-content-md-center align-items-md-center">
+          <div className="col-lg-4 col-md-4 col-12 d-flex align-items-lg-center justify-content-center mx-auto">
             <input
+              id="keyword-in"
               value={keyword}
               type="text"
               name="name"
-              className="keyword-search"
               placeholder="Search by keyword"
               onChange={handleKeywordChange}
             />
+          </div>
+          <div className="col-lg-4 col-md-4 col-12 select-bx d-flex align-items-lg-center justify-content-center mx-auto">
             <select
-              className="select-depts"
+              id="depts-in"
               name="depts"
               onChange={handleDeptChange}
               value={department}
@@ -204,30 +218,46 @@ function SearchBlock() {
               {displayDepts(departments)}
             </select>
           </div>
-          <input id="submit-search" type="submit" onClick={submitHandler} />
-        </form>
+          <div className="col-lg-4 col-md-4 col-12 submit-bx d-flex align-items-lg-center justify-content-center mx-auto">
+            <input
+              id="submit-search-in"
+              type="submit"
+              value={"SEARCH"}
+              onClick={submitHandler}
+            />
+          </div>
+        </div>
+      </form>
+      <div className="row tip-home">
+        <div className="col-lg-12 col-md-12">
+          <h2 className="search-tip">
+            Tip💡: You can slide & move the header bars
+          </h2>
+        </div>
       </div>
-      <h2>Tip💡: Click on a header to sort</h2>
-      <div
-        className={"ag-theme-quartz-dark ag-theme-savannah"}
-        style={{
-          width: "100%",
-          color: "white",
-          marginTop: "2vh",
-        }}
-      >
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={colDefs}
-          alwaysShowVerticalScroll={true}
-          debounceVerticalScrollbar={true}
-          pagination={true}
-          paginationPageSize={10}
-          paginationPageSizeSelector={[10, 20, 50]}
-          domLayout={"autoHeight"}
-        />
+      <div className="row ag-grid">
+        <div
+          className={
+            "col-lg-12 col-md-12 ag-theme-quartz-dark ag-theme-savannah"
+          }
+          style={{
+            width: "100%",
+            color: "white",
+            fontWeight: 400,
+          }}
+        >
+          <AgGridReact
+            rowData={rowData}
+            columnDefs={colDefs}
+            alwaysShowVerticalScroll={true}
+            debounceVerticalScrollbar={true}
+            pagination={true}
+            paginationPageSize={10}
+            paginationPageSizeSelector={[10, 20, 50]}
+            domLayout={"autoHeight"}
+          />
+        </div>
       </div>
     </div>
   );
 }
-export default SearchBlock;

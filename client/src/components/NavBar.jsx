@@ -6,26 +6,35 @@ import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <>
-      <div className="navBar-container">
-        <img className="logo" src={logo} />
-        <div className="top-right">
-          <div className="all-tr">
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <img className="img-fluid" src={logo} />
+        </div>
+        <div className="col-lg-6 col-md-6 col-sm-5 col-12 d-flex align-items-center justify-content-lg-end justify-content-md-end justify-content-end pe-lg-5 pe-md-5">
+          <div className="tr-elements">
             <div className="socials">
-              <img src={xlogo} id="x-logo" />
-              <img src={linkedinlogo} id="linkedin-logo" />
+              <a href="https://twitter.com/home">
+                <img src={xlogo} id="x-logo" />
+              </a>
+              <a href="https://www.linkedin.com/">
+                <img src={linkedinlogo} id="linkedin-logo" />
+              </a>
             </div>
-            <div className="links">
-              <Link className="about-link" to={`/about`}>
+            <div className="links d-block">
+              <a className="about-link" href="https://www.lehman.edu/about/">
                 ABOUT
-              </Link>
-              <Link className="admission-link" to={`/admissions`}>
+              </a>
+              <a
+                className="admission-link"
+                href="https://www.lehman.edu/admissions/"
+              >
                 ADMISSIONS
-              </Link>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
