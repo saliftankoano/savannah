@@ -21,7 +21,7 @@ import cors from "cors";
 const app = express();
 app.use(express.json()); // This middleware parses JSON data in the request body
 
-const port = 5172;
+const port = process.env.PORT;
 
 app.use(cors());
 app.use((req, res, next) => {
