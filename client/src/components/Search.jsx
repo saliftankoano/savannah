@@ -29,7 +29,6 @@ async function getAllDepts() {
   return finalResults;
 }
 
-const departments = await getAllDepts();
 //Search function Start
 export default function Search() {
   const [keyword, setKeyword] = useState("");
@@ -45,9 +44,22 @@ export default function Search() {
   ]);
 
   let results;
+
+  const [departments, setDepartments] = useState();
+  useEffect(() => {
+    async function fetchData() {
+      const fetchedDepartments = await getAllDepts();
+      // console.log("Fetched Departments:", fetchedDepartments);
+      setDepartments(fetchedDepartments);
+    }
+
+    fetchData(); // Call the function directly without including departments in the dependency array
+  }, []); // Empty dependency array to run the effect only once on mount
+
   useEffect(() => {
     getAllFaculty();
-  }, []); // Empty dependency array to fetch data on mount
+  }, []); // Include departments in the dependency array
+
   useEffect(() => {}, [colDefs]);
   useEffect(() => {}, [rowData]);
 
@@ -83,11 +95,16 @@ export default function Search() {
     }
   }
   function displayDepts(departments) {
-    return departments.map((option, index) => (
-      <option key={index} value={option.name}>
-        {option.name}
-      </option>
-    ));
+    console.log(departments);
+    return departments ? (
+      departments.map((option, index) => (
+        <option key={index} value={option.name}>
+          {option.name}
+        </option>
+      ))
+    ) : (
+      <option value="">Loading...</option>
+    );
   }
   function handleKeywordChange(event) {
     setKeyword(event.target.value);

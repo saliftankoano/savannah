@@ -146,6 +146,7 @@ export default function UpdateForm({ onSubmit }) {
                 formik.setFieldValue("id", numericId);
               }}
               isValid={formik.touched.id && !formik.errors.id}
+              isInvalid={!formik.touched.id && formik.submitCount > 0}
               required
             />
           </FloatingLabel>
