@@ -6,6 +6,8 @@
 
 This project was deployed through render.com using free instances with very limited computing power. You'll experience slightly slower performance than on a fully paid web app. Thank you for your understanding.
 
+Link: https://savannah-uv.onrender.com/
+
 ## Why Did I Build This?
 
 Welcome to the Savannah University Directory, a project born out of the excitement to tackle real-world challenges and make a meaningful impact. As a college student, I discovered a unique opportunity to create something valuable – a user-friendly university directory that goes beyond the ordinary.
